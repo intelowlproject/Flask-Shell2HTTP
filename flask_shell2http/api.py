@@ -9,18 +9,18 @@
 # system imports
 import functools
 from http import HTTPStatus
-from typing import Any, Callable, Dict
+from typing import Callable, Dict, Any
 
 # web imports
-from flask import jsonify, make_response, request
+from flask import request, jsonify, make_response
 from flask.views import MethodView
 from flask_executor import Executor
 from flask_executor.futures import Future
 
 # lib imports
 from .classes import RunnerParser
-from .exceptions import JobNotFoundException, JobStillRunningException
 from .helpers import get_logger
+from .exceptions import JobNotFoundException, JobStillRunningException
 
 logger = get_logger()
 runner_parser = RunnerParser()
@@ -93,7 +93,7 @@ class Shell2HttpAPI(MethodView):
             )
 
         except Exception as e:
-            logger.error(e)
+            logger.exception(e)
             return make_response(jsonify(error=str(e)), HTTPStatus.BAD_REQUEST)
 
     def post(self):
@@ -132,7 +132,7 @@ class Shell2HttpAPI(MethodView):
             )
 
         except Exception as e:
-            logger.error(e)
+            logger.exception(e)
             response_dict = {"error": str(e)}
             if key:
                 response_dict["key"] = key
@@ -171,7 +171,7 @@ class Shell2HttpAPI(MethodView):
             return make_response(jsonify(error=str(e)), HTTPStatus.NOT_FOUND)
 
         except Exception as e:
-            logger.error(e)
+            logger.exception(e)
             return make_response(jsonify(error=str(e)), HTTPStatus.BAD_REQUEST)
 
     @classmethod

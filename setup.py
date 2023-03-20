@@ -7,7 +7,6 @@ Execute shell commands asynchronously and safely from flask's endpoints.
 ##### Docs & Example usage on GitHub: https://github.com/eshaan7/flask-shell2http
 """
 import pathlib
-
 from setuptools import setup
 
 # The directory containing this file
@@ -19,7 +18,7 @@ README = (HERE / "README.md").read_text()
 # version
 VERSION = (HERE / "version.txt").read_text()
 
-GITHUB_URL = "https://github.com/eshaan7/flask-shell2http"
+GITHUB_URL = "https://github.com/intelowlproject/flask-shell2http"
 
 requirements = (HERE / "requirements.txt").read_text().split("\n")
 
@@ -27,7 +26,7 @@ requirements_test = (HERE / "requirements.dev.txt").read_text().split("\n")
 
 # This call to setup() does all the work
 setup(
-    name="Flask-Shell2HTTP",
+    name="Flask-Shell2HTTP-fork",
     version=VERSION,
     url=GITHUB_URL,
     license="BSD",
